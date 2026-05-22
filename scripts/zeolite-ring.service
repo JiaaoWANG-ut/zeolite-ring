@@ -1,0 +1,16 @@
+[Unit]
+Description=Zeolite Ring local dev server (port 8001)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/jiaao/zeolite-ring
+ExecStart=/usr/bin/python3 /home/jiaao/zeolite-ring/scripts/dev_server.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,15 @@
+# Exclude dev-only files from Wrangler static asset upload
+.git/
+.gitignore
+.cursor/
+.wrangler/
+.dev.vars*
+*.py
+scripts/
+docs/
+*.md
+!README.md
+process_topology.py
+pre_scan.py
+plot_si_framework.py
+zeolite_metadata.json.bak

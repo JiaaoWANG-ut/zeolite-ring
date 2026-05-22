@@ -48,7 +48,7 @@ Without Supabase configured, auth is skipped and the viewer opens directly.
 Requires Python 3.11+ with pymatgen:
 
 ```bash
-pip install -r requirements.txt
+pip install -r scripts/requirements.txt
 python3 scripts/build_topology.py
 ```
 
@@ -78,16 +78,20 @@ window.__SUPABASE_CONFIG__ = {
 };
 ```
 
-## Cloudflare Pages Deployment
+## Cloudflare Workers Deployment (GitHub → auto deploy)
 
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. Select repository: `JiaaoWANG-ut/zeolite-ring`
-3. Build settings:
-   - **Production branch:** `main`
-   - **Build command:** *(leave empty)*
-   - **Build output directory:** `/`
-4. Deploy. Every `git push` to `main` triggers a new deployment.
-5. Optional custom domain: Pages project → **Custom domains**
+This repo uses **Cloudflare Workers static assets** via `wrangler.jsonc`. Each push to `main` triggers:
+
+1. `npx wrangler deploy` (no Python build step)
+2. Static files served from repo root (`landing.html`, `viewer.html`, `assets/`, `data/`, `paper/`)
+
+**Build settings in Cloudflare Dashboard:**
+
+- **Production branch:** `main`
+- **Build command:** `npx wrangler deploy`
+- **Python dependencies:** none at deploy time (`requirements.txt` lives under `scripts/` for local dev only)
+
+5. Optional custom domain: Workers project → **Custom domains** → `zeolitering.com`
 
 ### Post-deploy checklist
 
