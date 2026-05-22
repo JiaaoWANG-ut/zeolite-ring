@@ -9,58 +9,61 @@ function clockLocale(lang) {
 }
 
 function formatTime(date, tz, locale) {
-  return new Intl.DateTimeFormat(locale, {
-    timeZone: tz,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  }).format(date);
+  try {
+    return new Intl.DateTimeFormat(locale, {
+      timeZone: tz,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(date);
+  } catch {
+    return date.toLocaleTimeString(locale, { hour12: false });
+  }
 }
 
 function formatDate(date, tz, locale) {
-  return new Intl.DateTimeFormat(locale, {
-    timeZone: tz,
-    month: "short",
-    day: "numeric",
-    weekday: "short",
-  }).format(date);
+  try {
+    return new Intl.DateTimeFormat(locale, {
+      timeZone: tz,
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+    }).format(date);
+  } catch {
+    return date.toLocaleDateString(locale);
+  }
 }
 
 export function initClocks(t, getLang) {
-  const root = document.getElementById("footer-clocks");
-  if (!root) return;
-
-  root.innerHTML = CLOCKS.map(
-    (c) => `
-    <div class="clock-item" data-clock="${c.id}">
-      <span class="clock-label" data-i18n="${c.labelKey}"></span>
-      <span class="clock-time" id="clock-time-${c.id}">--:--:--</span>
-      <span class="clock-date" id="clock-date-${c.id}"></span>
-    </div>`
-  ).join("");
+  const items = document.querySelectorAll("[data-clock]");
+  if (!items.length) return;
 
   function applyLabels() {
-    root.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (key) el.textContent = t(key);
+    items.forEach((item) => {
+      const config = CLOCKS.find((c) => c.id === item.dataset.clock);
+      if (!config) return;
+      const label = item.querySelector("[data-role='label']");
+      if (label) label.textContent = t(config.labelKey);
     });
   }
 
   function tick() {
     const now = new Date();
     const locale = clockLocale(getLang());
-    CLOCKS.forEach((c) => {
-      const timeEl = document.getElementById(`clock-time-${c.id}`);
-      const dateEl = document.getElementById(`clock-date-${c.id}`);
-      if (timeEl) timeEl.textContent = formatTime(now, c.tz, locale);
-      if (dateEl) dateEl.textContent = formatDate(now, c.tz, locale);
+    items.forEach((item) => {
+      const config = CLOCKS.find((c) => c.id === item.dataset.clock);
+      if (!config) return;
+      const timeEl = item.querySelector("[data-role='time']");
+      const dateEl = item.querySelector("[data-role='date']");
+      if (timeEl) timeEl.textContent = formatTime(now, config.tz, locale);
+      if (dateEl) dateEl.textContent = formatDate(now, config.tz, locale);
     });
   }
 
   applyLabels();
   tick();
-  setInterval(tick, 1000);
+  window.setInterval(tick, 1000);
   document.addEventListener("langchange", () => {
     applyLabels();
     tick();

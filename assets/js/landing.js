@@ -10,9 +10,13 @@ import { initI18n, t, getLang } from "./i18n.js";
 import { initPaperReader } from "./papers.js";
 import { initClocks } from "./clocks.js";
 
-initI18n();
-initPaperReader(t);
-initClocks(t, getLang);
+function boot() {
+  initI18n();
+  initPaperReader(t);
+  initClocks(t, getLang);
+}
+
+boot();
 
 const modal = document.getElementById("auth-modal");
 const authError = document.getElementById("auth-error");

@@ -54,15 +54,68 @@ body::before {
 
 .site-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px clamp(20px, 4vw, 40px);
+  flex-direction: column;
   border-bottom: 1px solid var(--zr-border);
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 40px);
+  flex-wrap: wrap;
+}
+
+.timezone-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--zr-border);
+  background: var(--zr-bg);
+}
+
+.timezone-bar .clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 12px;
+  border-right: 1px solid var(--zr-border);
+  text-align: center;
+}
+
+.timezone-bar .clock-item:last-child {
+  border-right: none;
+}
+
+.timezone-bar .clock-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--zr-text-muted);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.timezone-bar .clock-time {
+  font-family: var(--zr-font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--zr-ion);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.timezone-bar .clock-date {
+  font-size: 0.68rem;
+  color: var(--zr-text-faint);
+  line-height: 1.3;
 }
 
 .logo-mark {
@@ -801,50 +854,6 @@ body::before {
 
 .footer-nav a:hover { text-decoration: underline; }
 
-.footer-clocks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 16px 18px;
-  background: var(--zr-bg);
-  border: 1px solid var(--zr-border);
-  border-radius: var(--zr-radius-md);
-}
-
-.clock-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 4px 8px;
-  border-right: 1px solid var(--zr-border);
-}
-
-.clock-item:last-child {
-  border-right: none;
-}
-
-.clock-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--zr-text-muted);
-  letter-spacing: 0.02em;
-}
-
-.clock-time {
-  font-family: var(--zr-font-mono);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--zr-ion);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-}
-
-.clock-date {
-  font-size: 0.72rem;
-  color: var(--zr-text-faint);
-}
-
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1085,7 +1094,7 @@ body::before {
   .readout-cell { border-right: none !important; }
   .paper-grid { grid-template-columns: 1fr; }
   .pdf-modal-toolbar { flex-direction: column; }
-  .footer-clocks { grid-template-columns: 1fr; }
-  .clock-item { border-right: none; border-bottom: 1px solid var(--zr-border); padding-bottom: 12px; }
-  .clock-item:last-child { border-bottom: none; padding-bottom: 4px; }
+  .timezone-bar { grid-template-columns: 1fr; }
+  .timezone-bar .clock-item { border-right: none; border-bottom: 1px solid var(--zr-border); }
+  .timezone-bar .clock-item:last-child { border-bottom: none; }
 }

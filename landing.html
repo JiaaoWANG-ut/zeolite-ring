@@ -17,23 +17,42 @@
 
   <div class="page">
     <header class="site-header">
-      <div class="logo-mark">
-        <div class="logo-icon">Li⁺</div>
-        <div class="logo-text">Zeolite <span>Ring</span></div>
-      </div>
-      <nav class="header-nav">
-        <a href="#science" data-i18n="navScience">Science</a>
-        <a href="#reading" data-i18n="navReading">Reading</a>
-        <a href="#capabilities" data-i18n="navCapabilities">Platform</a>
-        <a href="#author" data-i18n="navAuthor">Author</a>
-        <a href="#links" data-i18n="navLinks">Links</a>
-        <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="navSource">Source</a>
-        <div class="lang-switch">
-          <button type="button" data-lang="en" class="active" data-i18n="langEn">EN</button>
-          <button type="button" data-lang="zh" data-i18n="langZh">中文</button>
+      <div class="header-row">
+        <div class="logo-mark">
+          <div class="logo-icon">Li⁺</div>
+          <div class="logo-text">Zeolite <span>Ring</span></div>
         </div>
-        <button class="btn btn-primary nav-cta" id="enter-btn-header" type="button" data-i18n="navLaunch">Launch Viewer</button>
-      </nav>
+        <nav class="header-nav">
+          <a href="#science" data-i18n="navScience">Science</a>
+          <a href="#reading" data-i18n="navReading">Reading</a>
+          <a href="#capabilities" data-i18n="navCapabilities">Platform</a>
+          <a href="#author" data-i18n="navAuthor">Author</a>
+          <a href="#links" data-i18n="navLinks">Links</a>
+          <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="navSource">Source</a>
+          <div class="lang-switch">
+            <button type="button" data-lang="en" class="active" data-i18n="langEn">EN</button>
+            <button type="button" data-lang="zh" data-i18n="langZh">中文</button>
+          </div>
+          <button class="btn btn-primary nav-cta" id="enter-btn-header" type="button" data-i18n="navLaunch">Launch Viewer</button>
+        </nav>
+      </div>
+      <div class="timezone-bar" id="timezone-bar" aria-live="polite">
+        <div class="clock-item" data-clock="beijing">
+          <span class="clock-label" data-role="label" data-i18n="clockBeijing">Beijing (CST)</span>
+          <span class="clock-time" data-role="time">--:--:--</span>
+          <span class="clock-date" data-role="date"></span>
+        </div>
+        <div class="clock-item" data-clock="austin">
+          <span class="clock-label" data-role="label" data-i18n="clockAustin">Austin (CT)</span>
+          <span class="clock-time" data-role="time">--:--:--</span>
+          <span class="clock-date" data-role="date"></span>
+        </div>
+        <div class="clock-item" data-clock="sf">
+          <span class="clock-label" data-role="label" data-i18n="clockSF">San Francisco (PT)</span>
+          <span class="clock-time" data-role="time">--:--:--</span>
+          <span class="clock-date" data-role="date"></span>
+        </div>
+      </div>
     </header>
 
     <section class="hero">
@@ -193,7 +212,6 @@
           <a href="mailto:wangjiaao0720@utexas.edu" data-i18n="footerContact">Contact</a>
         </div>
       </div>
-      <div class="footer-clocks" id="footer-clocks" aria-live="polite"></div>
       <div class="footer-bottom">
         <span data-i18n="footerCopyright">© 2026 Jiaao Wang. Released under the MIT License.</span>
         <span class="footer-version">v1.1</span>
