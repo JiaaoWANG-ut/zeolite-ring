@@ -7,8 +7,10 @@ import {
   signUpWithEmail,
 } from "./auth.js";
 import { initI18n, t } from "./i18n.js";
+import { initPaperReader } from "./papers.js";
 
 initI18n();
+initPaperReader(t);
 
 const modal = document.getElementById("auth-modal");
 const authError = document.getElementById("auth-error");

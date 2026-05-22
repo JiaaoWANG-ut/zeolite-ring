@@ -18,12 +18,19 @@
     </div>
 
     <div id="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content modal-panel">
             <div class="modal-header">
                 <h2 data-i18n="modalSelect">Select Zeolite Framework</h2>
                 <div class="close-btn" onclick="toggleModal(false)">×</div>
             </div>
-            <input type="text" id="modal-search" data-i18n-placeholder="modalSearch" placeholder="Search…">
+            <div class="modal-toolbar">
+                <input type="text" id="modal-search" data-i18n-placeholder="modalSearch" placeholder="Search framework code…">
+                <div class="chip-legend">
+                    <span class="chip-legend-item"><span class="ring-dot ring-5" aria-hidden="true"></span><span data-i18n="modalLegend5">5MR</span></span>
+                    <span class="chip-legend-item"><span class="ring-dot ring-6" aria-hidden="true"></span><span data-i18n="modalLegend6">6MR</span></span>
+                    <span class="chip-legend-item"><span class="chip-legend-sample both" aria-hidden="true"></span><span data-i18n="modalLegendBoth">Both</span></span>
+                </div>
+            </div>
             <div id="chip-grid"></div>
         </div>
     </div>
@@ -184,14 +191,42 @@
                 const grid = document.getElementById('chip-grid'); grid.innerHTML = '';
                 cifFiles.filter(x => x.toLowerCase().includes(f.toLowerCase())).forEach(c => {
                     const name = c.replace('.cif', ''), m = metadata[name] || { rings5: 0, rings6: 0 };
+                    const has5 = m.rings5 > 0, has6 = m.rings6 > 0;
                     const el = document.createElement('div'); el.className = 'zeo-chip';
-                    if (m.rings5 > 0 && m.rings6 > 0) el.classList.add('has-both');
-                    else if (m.rings5 > 0) el.classList.add('has-5mr');
-                    else if (m.rings6 > 0) el.classList.add('has-6mr');
-                    el.innerText = name; el.onclick = () => { loadZeolite(c); toggleModal(false); };
+                    if (has5 && has6) el.classList.add('has-both');
+                    else if (has5) el.classList.add('has-5mr');
+                    else if (has6) el.classList.add('has-6mr');
+                    else el.classList.add('has-none');
+
+                    const nameEl = document.createElement('span');
+                    nameEl.className = 'zeo-chip-name';
+                    nameEl.textContent = name;
+
+                    if (has5 || has6) {
+                        const rings = document.createElement('span');
+                        rings.className = 'zeo-chip-rings';
+                        if (has5) {
+                            const d5 = document.createElement('span');
+                            d5.className = 'ring-dot ring-5';
+                            d5.title = '5MR';
+                            rings.appendChild(d5);
+                        }
+                        if (has6) {
+                            const d6 = document.createElement('span');
+                            d6.className = 'ring-dot ring-6';
+                            d6.title = '6MR';
+                            rings.appendChild(d6);
+                        }
+                        el.appendChild(rings);
+                    }
+
+                    el.appendChild(nameEl);
+
+                    el.onclick = () => { loadZeolite(c); toggleModal(false); };
                     grid.appendChild(el);
                 });
             };
+            document.addEventListener('langchange', () => renderChips(document.getElementById('modal-search').value));
             document.getElementById('modal-search').oninput = e => renderChips(e.target.value);
             renderChips(); loadZeolite('LTA.cif'); setupUI(); animate();
         }

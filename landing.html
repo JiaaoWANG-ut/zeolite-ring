@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zeolite Ring</title>
-  <meta name="description" content="World-first molecular sieve ion-conduction topology analysis for battery electrolytes.">
+  <meta name="description" content="Zeolite ion-conduction topology for Li, Na, and Zn solid-state battery electrolytes.">
   <link rel="stylesheet" href="assets/css/landing.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -20,6 +20,7 @@
       </div>
       <nav class="header-nav">
         <a href="#science" data-i18n="navScience">Science</a>
+        <a href="#reading" data-i18n="navReading">Reading</a>
         <a href="#capabilities" data-i18n="navCapabilities">Platform</a>
         <a href="#author" data-i18n="navAuthor">Author</a>
         <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="navSource">Source</a>
@@ -33,10 +34,10 @@
 
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow" data-i18n="eyebrow">Battery Electrolyte · Molecular Sieve Ion Transport</div>
+        <div class="eyebrow" data-i18n="eyebrow">Solid-State Electrolyte · Zeolite Ion Transport</div>
         <h1>
-          <span data-i18n="heroTitle1">World's first platform for</span><br>
-          <span class="line-ion" data-i18n="heroTitle2">molecular-sieve ion-conduction topology</span>
+          <span data-i18n="heroTitle1">Zeolite ion-conduction topology</span><br>
+          <span class="line-ion" data-i18n="heroTitle2">for solid-state battery electrolytes</span>
         </h1>
         <p class="hero-lead" data-i18n="heroLead">Map 263 zeolite frameworks...</p>
         <div class="hero-actions">
@@ -62,9 +63,13 @@
             <div class="readout-note" data-i18n="readoutRingsNote">Planarity filtered</div>
           </div>
           <div class="readout-cell full">
-            <div class="readout-label" data-i18n="readoutApps">Primary application</div>
-            <div class="readout-value" style="font-size:1.2rem;" data-i18n="readoutAppsVal">Li-ion battery electrolytes</div>
-            <div class="readout-note" data-i18n="readoutAppsNote">Ion-conduction topology screening</div>
+            <div class="readout-label" data-i18n="readoutApps">Applications</div>
+            <ul class="readout-apps">
+              <li data-i18n="readoutAppLi">Li-ion · solid electrolytes</li>
+              <li data-i18n="readoutAppNa">Na-ion batteries</li>
+              <li data-i18n="readoutAppZn">Zn-ion batteries</li>
+            </ul>
+            <div class="readout-note" data-i18n="readoutAppsNote">Zeolite ion-conduction topology screening</div>
           </div>
         </div>
       </aside>
@@ -78,6 +83,14 @@
         <p data-i18n="scienceP2">5MR and 6MR environments...</p>
         <p data-i18n="scienceP3">Zeolite Ring provides...</p>
       </article>
+    </section>
+
+    <section class="section" id="reading">
+      <div class="section-head">
+        <h2 data-i18n="readingTitle">Related Reading</h2>
+      </div>
+      <p class="section-lead" data-i18n="readingSub">Key zeolite electrolyte papers — click to preview PDF in-browser.</p>
+      <div class="paper-grid" id="paper-grid"></div>
     </section>
 
     <section class="section" id="capabilities">
@@ -105,8 +118,8 @@
       <div class="stack-row">
         <span class="chip ion" data-i18n="chipThree">Three.js</span>
         <span class="chip ion" data-i18n="chipCloudflare">Cloudflare</span>
-        <span class="chip battery" data-i18n="chipBattery">Battery Electrolytes</span>
-        <span class="chip battery" data-i18n="chipSieve">Molecular Sieves</span>
+        <span class="chip battery" data-i18n="chipBattery">Solid Electrolytes</span>
+        <span class="chip battery" data-i18n="chipZeolite">Zeolites</span>
       </div>
     </section>
 
@@ -142,6 +155,23 @@
       <span data-i18n="footerText">Zeolite Ring</span>
       <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
     </footer>
+  </div>
+
+  <div class="modal-backdrop" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
+    <div class="pdf-modal-wrap">
+      <div class="pdf-modal-toolbar">
+        <div class="pdf-modal-info">
+          <h2 id="pdf-modal-title"></h2>
+          <p id="pdf-modal-meta"></p>
+        </div>
+        <div class="pdf-modal-actions">
+          <a class="btn btn-outline btn-sm" id="pdf-doi-link" href="#" target="_blank" rel="noopener" data-i18n="paperDoi">DOI</a>
+          <a class="btn btn-outline btn-sm" id="pdf-download" href="#" download data-i18n="paperDownload">Download PDF</a>
+          <button class="pdf-close" id="pdf-close" type="button" aria-label="Close" data-i18n="paperClose">Close</button>
+        </div>
+      </div>
+      <iframe id="pdf-frame" title="PDF preview"></iframe>
+    </div>
   </div>
 
   <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true">
