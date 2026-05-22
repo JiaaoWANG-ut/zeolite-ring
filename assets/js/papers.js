@@ -1,7 +1,7 @@
 export const PAPERS = [
   {
     id: "nature-2021-li-air",
-    pdf: "paper/s41586-021-03410-9 (1).pdf",
+    pdf: "paper/nature-2021-zeolite-electrolyte-li-air.pdf",
     doi: "https://doi.org/10.1038/s41586-021-03410-9",
     journal: "Nature",
     year: "2021",

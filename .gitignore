@@ -5,6 +5,9 @@ __pycache__/
 .DS_Store
 topology.json
 
+# Original Nature PDF exceeds Cloudflare 25 MiB asset limit; use compressed copy in repo
+paper/s41586-021-03410-9*.pdf
+
 # wrangler files
 .wrangler
 .dev.vars*
