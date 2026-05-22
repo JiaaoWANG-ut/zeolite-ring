@@ -6,11 +6,13 @@ import {
   signInWithMagicLink,
   signUpWithEmail,
 } from "./auth.js";
-import { initI18n, t } from "./i18n.js";
+import { initI18n, t, getLang } from "./i18n.js";
 import { initPaperReader } from "./papers.js";
+import { initClocks } from "./clocks.js";
 
 initI18n();
 initPaperReader(t);
+initClocks(t, getLang);
 
 const modal = document.getElementById("auth-modal");
 const authError = document.getElementById("auth-error");

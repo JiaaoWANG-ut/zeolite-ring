@@ -692,8 +692,6 @@ body::before {
 
 .links-grid li:nth-child(2) a { border-left-color: var(--zr-sieve); }
 .links-grid li:nth-child(3) a { border-left-color: var(--zr-battery); }
-.links-grid li:nth-child(4) a { border-left-color: #6366f1; }
-.links-grid li:nth-child(5) a { border-left-color: #0f766e; }
 
 .links-grid a:hover {
   background: var(--zr-accent-soft);
@@ -802,6 +800,50 @@ body::before {
 }
 
 .footer-nav a:hover { text-decoration: underline; }
+
+.footer-clocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  background: var(--zr-bg);
+  border: 1px solid var(--zr-border);
+  border-radius: var(--zr-radius-md);
+}
+
+.clock-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 8px;
+  border-right: 1px solid var(--zr-border);
+}
+
+.clock-item:last-child {
+  border-right: none;
+}
+
+.clock-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--zr-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.clock-time {
+  font-family: var(--zr-font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--zr-ion);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.clock-date {
+  font-size: 0.72rem;
+  color: var(--zr-text-faint);
+}
 
 .footer-bottom {
   display: flex;
@@ -1043,4 +1085,7 @@ body::before {
   .readout-cell { border-right: none !important; }
   .paper-grid { grid-template-columns: 1fr; }
   .pdf-modal-toolbar { flex-direction: column; }
+  .footer-clocks { grid-template-columns: 1fr; }
+  .clock-item { border-right: none; border-bottom: 1px solid var(--zr-border); padding-bottom: 12px; }
+  .clock-item:last-child { border-bottom: none; padding-bottom: 4px; }
 }
