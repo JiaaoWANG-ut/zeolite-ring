@@ -454,7 +454,49 @@ body::before {
   font-size: 0.88rem;
   color: var(--zr-text-muted);
   line-height: 1.6;
-  margin: 0;
+  margin: 0 0 12px;
+}
+
+.author-email {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-family: var(--zr-font-mono);
+  font-size: 0.85rem;
+  color: var(--zr-ion);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.author-email:hover { text-decoration: underline; }
+
+.author-maintain,
+.author-contribute {
+  font-size: 0.88rem;
+  color: var(--zr-text-muted);
+  line-height: 1.65;
+  margin: 0 0 10px;
+}
+
+.collaborator-block {
+  margin-top: 24px;
+  padding: 24px 32px;
+  background: var(--zr-surface);
+  border: 1px solid var(--zr-border);
+  border-radius: var(--zr-radius-lg);
+}
+
+.collaborator-block h3 {
+  font-family: var(--zr-font-display);
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+}
+
+.collaborator-block .author-name {
+  font-size: 1.1rem;
+}
+
+.collaborator-block .links-list {
+  margin-top: 12px;
 }
 
 .links-block {
