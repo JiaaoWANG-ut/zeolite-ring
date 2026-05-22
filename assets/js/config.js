@@ -1,9 +1,8 @@
 /**
  * Supabase configuration.
- * Replace placeholders after creating your Supabase project.
- * See README.md for setup instructions.
+ * Project: rbiizuchnzklduinnqxx
  */
 window.__SUPABASE_CONFIG__ = {
-  url: "YOUR_SUPABASE_URL",
-  anonKey: "YOUR_SUPABASE_ANON_KEY",
+  url: "https://rbiizuchnzklduinnqxx.supabase.co",
+  anonKey: "sb_publishable_S97aHVT2oOpv_6P4-FiXug_hSNSdgO3",
 };

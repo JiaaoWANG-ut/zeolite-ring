@@ -5,7 +5,8 @@ const isConfigured =
   config.url &&
   config.anonKey &&
   !config.url.includes("YOUR_SUPABASE") &&
-  !config.anonKey.includes("YOUR_SUPABASE");
+  !config.anonKey.includes("YOUR_SUPABASE") &&
+  !config.anonKey.includes("YOUR_SUPABASE_ANON");
 
 export const supabase = isConfigured
   ? createClient(config.url, config.anonKey)
