@@ -1,7 +1,7 @@
 export const PAPERS = [
   {
     id: "nature-2021-li-air",
-    pdf: "assets/papers/nature-2021-zeolite-electrolyte-li-air.pdf",
+    pdf: "paper/s41586-021-03410-9 (1).pdf",
     doi: "https://doi.org/10.1038/s41586-021-03410-9",
     journal: "Nature",
     year: "2021",
@@ -11,7 +11,7 @@ export const PAPERS = [
   },
   {
     id: "jacs-2023-guest-wrench",
-    pdf: "assets/papers/jacs-2023-guest-wrench-zeolite.pdf",
+    pdf: "paper/enabling-high-performance-all-solid-state-batteries-via-guest-wrench-in-zeolite-strategy.pdf",
     doi: "https://doi.org/10.1021/jacs.3c07858",
     journal: "JACS",
     year: "2023",
@@ -20,6 +20,11 @@ export const PAPERS = [
     summaryKey: "paper2Summary",
   },
 ];
+
+function pdfHref(path) {
+  const parts = path.split("/");
+  return parts.map((part, i) => (i === 0 ? part : encodeURIComponent(part))).join("/");
+}
 
 export function initPaperReader(t) {
   const modal = document.getElementById("pdf-modal");
@@ -40,11 +45,12 @@ export function initPaperReader(t) {
   }
 
   function openPdfModal(paper) {
+    const url = pdfHref(paper.pdf);
     titleEl.textContent = t(paper.titleKey);
     metaEl.textContent = `${t(paper.authorsKey)} · ${paper.journal} (${paper.year})`;
-    frame.src = paper.pdf;
-    downloadEl.href = paper.pdf;
-    downloadEl.setAttribute("download", "");
+    frame.src = url;
+    downloadEl.href = url;
+    downloadEl.setAttribute("download", paper.pdf.split("/").pop());
     doiEl.href = paper.doi;
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
