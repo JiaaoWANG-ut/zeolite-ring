@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeolite Ring — Molecular Sieve Topology</title>
+  <meta name="description" content="Interactive 3D explorer for zeolite framework topologies, ring statistics, and battery-relevant molecular sieve structures.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/landing.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="logo">Zeolite <span>Ring</span></div>
+      <a class="header-link" href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Industrial<br><em>Molecular Sieve</em><br>Topology Lab</h1>
+        <p class="hero-lead">
+          Explore 263 zeolite frameworks in three dimensions. Inspect 5-member and 6-member rings,
+          export publication-ready renders, and study structures relevant to catalysis, separation, and battery electrolyte design.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="enter-btn">Enter Viewer</button>
+          <a class="btn btn-ghost" href="#about">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card highlight">
+          <div class="stat-label">Framework Library</div>
+          <div class="stat-value">263</div>
+          <div class="stat-note">IZA-style zeolite topologies with precomputed ring statistics.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Ring Detection</div>
+          <div class="stat-value mono">5MR · 6MR</div>
+          <div class="stat-note">Planarity and bond-angle filtered ring enumeration on Si frameworks.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Applications</div>
+          <div class="stat-value" style="font-size:1.5rem;">Battery · Catalysis</div>
+          <div class="stat-note">From ion-transport sieves to industrial adsorbent design.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section-title">Built for materials research</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Interactive 3D Viewer</h3>
+          <p>Orbit, expand unit cells, toggle ring highlights, and export high-resolution images with custom backgrounds.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Precomputed Topologies</h3>
+          <p>Every framework ships with static topology JSON — fast loads on Cloudflare Pages, no backend required.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Secure Access</h3>
+          <p>Sign in with Google or email to access the viewer. Open-source and maintained on GitHub.</p>
+        </article>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Three.js</span>
+        <span class="tag">Cloudflare Pages</span>
+        <span class="tag battery">Battery Materials</span>
+        <span class="tag battery">Molecular Sieves</span>
+        <span class="tag">Supabase Auth</span>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>Zeolite Ring · Topology visualization for research teams</span>
+      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">View source on GitHub</a>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-wrap">
+      <button class="auth-close" id="auth-close" aria-label="Close">×</button>
+      <div class="auth-modal">
+        <h2 id="auth-title">Sign in to continue</h2>
+        <p class="auth-sub">Use Google or your email to access the interactive zeolite viewer.</p>
+
+        <button class="btn btn-primary" id="google-signin" style="width:100%; margin-bottom: 16px;">
+          Continue with Google
+        </button>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Sign In</button>
+          <button class="auth-tab" data-tab="signup">Register</button>
+          <button class="auth-tab" data-tab="magic">Magic Link</button>
+        </div>
+
+        <form class="auth-form active" id="form-login">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" autocomplete="email" required>
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+          <button class="btn btn-primary" type="submit">Sign In</button>
+        </form>
+
+        <form class="auth-form" id="form-signup">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" autocomplete="email" required>
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" autocomplete="new-password" minlength="6" required>
+          <button class="btn btn-primary" type="submit">Create Account</button>
+        </form>
+
+        <form class="auth-form" id="form-magic">
+          <label for="magic-email">Email</label>
+          <input id="magic-email" type="email" autocomplete="email" required>
+          <button class="btn btn-primary" type="submit">Send Magic Link</button>
+        </form>
+
+        <p class="auth-error" id="auth-error"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script type="module" src="assets/js/landing.js"></script>
+</body>
+</html>
