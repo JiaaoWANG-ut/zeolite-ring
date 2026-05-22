@@ -1,6 +1,6 @@
 export const STRINGS = {
   en: {
-    metaTitle: "Zeolite Ring — Ion-Conduction Topology Platform",
+    metaTitle: "Zeolite Ring — Open-source Ion-Conduction Topology Platform",
     metaDesc: "Open-source zeolite ion-conduction topology platform — 5/6 member-ring visualizer for Li, Na, and Zn solid-state battery electrolytes.",
     navScience: "Science",
     navReading: "Reading",
@@ -14,7 +14,7 @@ export const STRINGS = {
     langZh: "中文",
     eyebrow: "Solid-State Electrolyte · Zeolite Ion Transport",
     heroTagline: "Open-source Zeolite ion-Conduction 5/6 Member-Rings Topology Visualizer",
-    heroTitle1: "Zeolite ion-conduction topology Platform",
+    heroTitle1: "Open-source Zeolite ion-conduction topology Platform",
     heroTitle2: "for solid-state battery electrolytes",
     heroLead: "Map 263 zeolite frameworks in three dimensions. Quantify 5- and 6-member rings that govern Li⁺, Na⁺, and Zn²⁺ transport in solid electrolytes — from framework structure to ionic blocking.",
     heroCta: "Enter Viewer",
@@ -138,7 +138,7 @@ export const STRINGS = {
     exportDownload: "Download",
   },
   zh: {
-    metaTitle: "Zeolite Ring — 沸石离子传导拓扑平台",
+    metaTitle: "Zeolite Ring — 开源沸石离子传导拓扑平台",
     metaDesc: "开源沸石离子传导拓扑平台 — 面向 Li、Na、Zn 固态电池电解质的 5/6 元环可视化工具。",
     navScience: "科学背景",
     navReading: "相关阅读",
@@ -152,7 +152,7 @@ export const STRINGS = {
     langZh: "中文",
     eyebrow: "固态电解质 · 沸石离子传输",
     heroTagline: "Open-source Zeolite ion-Conduction 5/6 Member-Rings Topology Visualizer",
-    heroTitle1: "沸石离子传导拓扑平台",
+    heroTitle1: "开源沸石离子传导拓扑平台",
     heroTitle2: "面向固态电池电解质",
     heroLead: "三维可视化 263 种沸石骨架，定量分析 5 元环与 6 元环如何影响固态电解质中 Li⁺、Na⁺、Zn²⁺ 的传输——从骨架结构到离子阻塞。",
     heroCta: "进入查看器",
