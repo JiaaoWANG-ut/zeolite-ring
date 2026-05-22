@@ -7,98 +7,125 @@
   <meta name="description" content="Interactive 3D explorer for zeolite framework topologies, ring statistics, and battery-relevant molecular sieve structures.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/landing.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
 
   <div class="page">
     <header class="site-header">
-      <div class="logo">Zeolite <span>Ring</span></div>
-      <a class="header-link" href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
+      <div class="logo-mark">
+        <div class="logo-icon">ZR</div>
+        <div class="logo-text">Zeolite <span>Ring</span></div>
+      </div>
+      <nav class="header-nav">
+        <a href="#capabilities">Capabilities</a>
+        <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">Source</a>
+        <button class="btn btn-primary nav-cta" id="enter-btn-header" type="button">Launch Viewer</button>
+      </nav>
     </header>
 
     <section class="hero">
       <div class="hero-copy">
-        <h1>Industrial<br><em>Molecular Sieve</em><br>Topology Lab</h1>
+        <div class="eyebrow">Molecular Sieve · Battery Materials</div>
+        <h1>
+          Map <span class="line-ion">263 frameworks</span><br>
+          Ring by ring,<br>
+          <span class="line-battery">cell to catalyst.</span>
+        </h1>
         <p class="hero-lead">
-          Explore 263 zeolite frameworks in three dimensions. Inspect 5-member and 6-member rings,
-          export publication-ready renders, and study structures relevant to catalysis, separation, and battery electrolyte design.
+          A research-grade topology lab for zeolite frameworks. Inspect 5- and 6-member rings
+          on Si–O–Si networks, expand unit cells, and export figures for catalysis,
+          separation, and electrolyte design workflows.
         </p>
         <div class="hero-actions">
-          <button class="btn btn-primary" id="enter-btn">Enter Viewer</button>
-          <a class="btn btn-ghost" href="#about">Learn More</a>
+          <button class="btn btn-primary" id="enter-btn" type="button">Enter Viewer</button>
+          <a class="btn btn-outline" href="#capabilities">View Capabilities</a>
         </div>
       </div>
 
-      <div class="hero-stats">
-        <div class="stat-card highlight">
-          <div class="stat-label">Framework Library</div>
-          <div class="stat-value">263</div>
-          <div class="stat-note">IZA-style zeolite topologies with precomputed ring statistics.</div>
+      <aside class="readout-panel" aria-label="System readouts">
+        <div class="readout-header">
+          <span>Topology Engine</span>
+          <span class="readout-status">Online</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Ring Detection</div>
-          <div class="stat-value mono">5MR · 6MR</div>
-          <div class="stat-note">Planarity and bond-angle filtered ring enumeration on Si frameworks.</div>
+        <div class="readout-grid">
+          <div class="readout-cell">
+            <div class="readout-label">Frameworks</div>
+            <div class="readout-value gold">263</div>
+            <div class="readout-note">IZA-style topologies, precomputed</div>
+          </div>
+          <div class="readout-cell">
+            <div class="readout-label">Ring classes</div>
+            <div class="readout-value mono">5MR · 6MR</div>
+            <div class="readout-note">Angle + planarity filtered</div>
+          </div>
+          <div class="readout-cell full">
+            <div class="readout-label">Application domains</div>
+            <div class="readout-value" style="font-size:1.35rem;">Battery · Catalysis · Separation</div>
+            <div class="readout-note">Industrial molecular sieve structure analysis</div>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Applications</div>
-          <div class="stat-value" style="font-size:1.5rem;">Battery · Catalysis</div>
-          <div class="stat-note">From ion-transport sieves to industrial adsorbent design.</div>
-        </div>
-      </div>
+      </aside>
     </section>
 
-    <section class="section" id="about">
-      <h2 class="section-title">Built for materials research</h2>
+    <section class="section" id="capabilities">
+      <div class="section-head">
+        <h2>Capabilities</h2>
+        <span>v1.0 · static topology pipeline</span>
+      </div>
       <div class="feature-grid">
         <article class="feature-card">
-          <h3>Interactive 3D Viewer</h3>
-          <p>Orbit, expand unit cells, toggle ring highlights, and export high-resolution images with custom backgrounds.</p>
+          <div class="feature-index">01</div>
+          <h3>3D Framework Viewer</h3>
+          <p>Orbit, snap to crystallographic axes, expand lattice vectors, and toggle ring highlights with publication-ready export.</p>
         </article>
         <article class="feature-card">
-          <h3>Precomputed Topologies</h3>
-          <p>Every framework ships with static topology JSON — fast loads on Cloudflare Pages, no backend required.</p>
+          <div class="feature-index">02</div>
+          <h3>Precomputed Graphs</h3>
+          <p>Every framework ships as static JSON — instant loads on edge, zero server-side pymatgen at runtime.</p>
         </article>
         <article class="feature-card">
-          <h3>Secure Access</h3>
-          <p>Sign in with Google or email to access the viewer. Open-source and maintained on GitHub.</p>
+          <div class="feature-index">03</div>
+          <h3>Gated Access</h3>
+          <p>Sign in with Google or email. Open source, GitHub-maintained, deployed on Cloudflare.</p>
         </article>
       </div>
-      <div class="tag-row">
-        <span class="tag">Three.js</span>
-        <span class="tag">Cloudflare Pages</span>
-        <span class="tag battery">Battery Materials</span>
-        <span class="tag battery">Molecular Sieves</span>
-        <span class="tag">Supabase Auth</span>
+      <div class="stack-row">
+        <span class="chip ion">Three.js</span>
+        <span class="chip ion">Cloudflare</span>
+        <span class="chip battery">Molecular Sieves</span>
+        <span class="chip battery">Battery Materials</span>
+        <span class="chip">Supabase Auth</span>
+        <span class="chip">Bricolage Grotesque</span>
       </div>
     </section>
 
     <footer class="site-footer">
-      <span>Zeolite Ring · Topology visualization for research teams</span>
-      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">View source on GitHub</a>
+      <span>Zeolite Ring · Materials topology for research teams</span>
+      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">github.com/JiaaoWANG-ut/zeolite-ring</a>
     </footer>
   </div>
 
   <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
     <div class="modal-wrap">
-      <button class="auth-close" id="auth-close" aria-label="Close">×</button>
+      <button class="auth-close" id="auth-close" type="button" aria-label="Close">×</button>
       <div class="auth-modal">
-        <h2 id="auth-title">Sign in to continue</h2>
-        <p class="auth-sub">Use Google or your email to access the interactive zeolite viewer.</p>
+        <h2 id="auth-title">Access the lab</h2>
+        <p class="auth-sub">Sign in to open the interactive zeolite framework viewer.</p>
 
-        <button class="btn btn-primary" id="google-signin" style="width:100%; margin-bottom: 16px;">
+        <button class="btn btn-google" id="google-signin" type="button">
           Continue with Google
         </button>
 
+        <div class="auth-divider">or email</div>
+
         <div class="auth-tabs">
-          <button class="auth-tab active" data-tab="login">Sign In</button>
-          <button class="auth-tab" data-tab="signup">Register</button>
-          <button class="auth-tab" data-tab="magic">Magic Link</button>
+          <button class="auth-tab active" type="button" data-tab="login">Sign In</button>
+          <button class="auth-tab" type="button" data-tab="signup">Register</button>
+          <button class="auth-tab" type="button" data-tab="magic">Magic Link</button>
         </div>
 
         <form class="auth-form active" id="form-login">

@@ -5,465 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeolite Ring — Viewer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/viewer.css">
     <script src="assets/js/config.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <style>
-        :root {
-            --panel-bg: rgba(15, 23, 42, 0.9);
-            --accent: #38bdf8;
-            --text: #f1f5f9;
-        }
-
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Inter Tight', -apple-system, sans-serif;
-            background: #000;
-            color: var(--text);
-        }
-
-        #ui {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--panel-bg);
-            padding: 24px;
-            border-radius: 16px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 300px;
-            z-index: 100;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-        }
-
-        h1 {
-            margin: 0 0 20px 0;
-            font-family: 'Bricolage Grotesque', Georgia, serif;
-            font-size: 20px;
-            color: var(--accent);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .value-display {
-            float: right;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-        }
-
-        #auth-bar {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 110;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--panel-bg);
-            padding: 10px 16px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-        }
-
-        #auth-bar span {
-            color: #94a3b8;
-            max-width: 180px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        #auth-bar button,
-        #auth-bar a {
-            background: rgba(255, 255, 255, 0.06);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: none;
-        }
-
-        #auth-bar button:hover,
-        #auth-bar a:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .control-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 13px;
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        input[type="range"] {
-            width: 100%;
-            -webkit-appearance: none;
-            background: #334155;
-            height: 4px;
-            border-radius: 2px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            background: var(--accent);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-        }
-
-        #auth-bar {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        button {
-            background: #334155;
-            border: none;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-
-        button:hover {
-            background: #475569;
-        }
-
-        button.primary {
-            background: var(--accent);
-            color: #0f172a;
-            font-weight: bold;
-        }
-
-        button.primary:hover {
-            background: #7dd3fc;
-        }
-
-        .color-picker {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .color-picker input {
-            background: none;
-            border: none;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
-
-        #status {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 12px;
-            color: #64748b;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
-
-        .select-trigger {
-            width: 100%;
-            padding: 15px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 12px;
-            color: var(--accent);
-            font-weight: 700;
-            cursor: pointer;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s;
-        }
-
-        .select-trigger:hover {
-            background: rgba(56, 189, 248, 0.2);
-            transform: translateY(-2px);
-        }
-
-        #modal-overlay,
-        #export-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            display: none;
-            z-index: 1000;
-            padding: 40px;
-            flex-direction: column;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-size: 28px;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .close-btn {
-            background: rgba(255, 255, 255, 0.05);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        #modal-search {
-            width: 100%;
-            padding: 16px 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            font-size: 18px;
-            margin-bottom: 30px;
-            outline: none;
-        }
-
-        #chip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 12px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .zeo-chip {
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #94a3b8;
-        }
-
-        .zeo-chip.has-6mr {
-            border-color: rgba(250, 204, 21, 0.4);
-            color: #facc15;
-        }
-
-        .zeo-chip.has-5mr {
-            border-color: rgba(34, 197, 94, 0.4);
-            color: #22c55e;
-        }
-
-        .zeo-chip.has-both {
-            background: linear-gradient(135deg, rgba(250, 204, 21, 0.1), rgba(34, 197, 94, 0.1));
-            border-color: #facc15;
-            color: #22c55e;
-        }
-
-        .zeo-chip:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-        }
-
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 5px solid rgba(56, 189, 248, 0.2);
-            border-top: 5px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .export-layout {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 40px;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .preview-container {
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        #export-preview-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .export-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .dpi-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .dpi-btn {
-            background: #334155;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-            border: 2px solid transparent;
-        }
-
-        .dpi-btn.active {
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.2);
-        }
-
-        .toggle-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 44px;
-            height: 24px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #334155;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked+.slider {
-            background-color: var(--accent);
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(20px);
-        }
-    </style>
 </head>
 
 <body>
     <div id="loading-overlay">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; color: var(--accent); font-weight: bold;">Loading Structure...</p>
+        <p>Loading structure</p>
     </div>
 
     <div id="modal-overlay">
@@ -510,10 +61,14 @@
     </div>
 
     <div id="ui">
-        <h1>Zeolite Ring</h1>
-        <div class="select-trigger" onclick="toggleModal(true)"><span id="current-name">Select
-                Structure</span><span>›</span></div>
+        <div class="panel-header">
+            <h1>Zeolite Ring</h1>
+            <div class="panel-sub">Framework Viewer</div>
+        </div>
+        <div class="select-trigger" onclick="toggleModal(true)"><span id="current-name">Select Framework</span><span>↗</span></div>
 
+        <div class="panel-section">
+            <div class="panel-section-title">Lattice Expansion</div>
         <div class="control-group">
             <label>Expansion X <span class="value-display" id="exp-x-val">2</span></label>
             <input type="range" id="exp-x" min="1" max="5" value="2">
@@ -526,6 +81,10 @@
             <label>Expansion Z <span class="value-display" id="exp-z-val">2</span></label>
             <input type="range" id="exp-z" min="1" max="5" value="2">
         </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-section-title">Appearance</div>
         <div class="control-group">
             <label>Bond Thickness <span class="value-display" id="thick-val">0.10</span></label>
             <input type="range" id="thickness" min="0.02" max="0.3" step="0.01" value="0.10">
@@ -539,6 +98,16 @@
             <input type="range" id="face-opacity" min="0" max="1" step="0.05" value="0.20">
         </div>
         <div class="control-group">
+            <div class="color-picker">
+                <input type="color" id="bg-color" value="#000000">
+                <label style="margin:0">Background</label>
+            </div>
+        </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-section-title">Camera</div>
+        <div class="control-group">
             <label>View Padding (Å) <span class="value-display" id="padding-val">10.0</span></label>
             <input type="range" id="padding" min="0" max="20" step="0.5" value="10.0">
         </div>
@@ -546,31 +115,26 @@
             <label>FOV <span class="value-display" id="fov-val">0</span></label>
             <input type="range" id="fov" min="0" max="100" value="0">
         </div>
-
-        <div class="control-group" style="padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="color-picker">
-                <input type="color" id="bg-color" value="#000000">
-                <label style="margin:0">Background Color</label>
-            </div>
         </div>
 
-        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:15px">
-            <div class="toggle-row"><span>Show 5-MRs (Green)</span><label class="switch"><input type="checkbox"
+        <div class="panel-section">
+            <div class="panel-section-title">Ring Overlays</div>
+            <div class="toggle-row"><span class="ring-5">5-Member Rings</span><label class="switch"><input type="checkbox"
                         id="toggle-5mr" checked onchange="updateVisuals()"><span class="slider"></span></label></div>
-            <div class="toggle-row" style="margin-top:10px"><span>Show 6-MRs (Gold)</span><label class="switch"><input
+            <div class="toggle-row"><span class="ring-6">6-Member Rings</span><label class="switch"><input
                         type="checkbox" id="toggle-6mr" checked onchange="updateVisuals()"><span
                         class="slider"></span></label></div>
-            <div class="toggle-row" style="margin-top:10px"><span>Show Axes</span><label class="switch"><input
+            <div class="toggle-row"><span>Coordinate Axes</span><label class="switch"><input
                         type="checkbox" id="toggle-axes-main" checked onchange="updateAxesVisibility()"><span
                         class="slider"></span></label></div>
-            <div class="toggle-row" style="margin-top:10px"><span>Auto-Rotate</span><label class="switch"><input
+            <div class="toggle-row"><span>Auto-Rotate</span><label class="switch"><input
                         type="checkbox" id="toggle-rotate" onchange="updateRotation()"><span
                         class="slider"></span></label></div>
         </div>
 
         <div class="btn-group">
-            <button onclick="resetCamera()">Reset</button>
-            <button class="primary" onclick="openExportUI()">Export</button>
+            <button onclick="resetCamera()">Reset View</button>
+            <button class="primary" onclick="openExportUI()">Export PNG</button>
         </div>
     </div>
     <div id="status">Ready</div>
@@ -582,7 +146,7 @@
         let exportDPI = 1;
         let isUserInteracting = false;
 
-        const COLORS = { standard: 0x64748b, mr5: 0x22c55e, mr6: 0xfacc15 };
+        const COLORS = { standard: 0x64748b, mr5: 0x2ecc71, mr6: 0xd4a017 };
 
         async function init() {
             scene = new THREE.Scene(); scene.background = new THREE.Color(0);

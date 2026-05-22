@@ -10,6 +10,7 @@ import {
 const modal = document.getElementById("auth-modal");
 const authError = document.getElementById("auth-error");
 const enterBtn = document.getElementById("enter-btn");
+const enterBtnHeader = document.getElementById("enter-btn-header");
 
 function setError(message) {
   authError.textContent = message || "";
@@ -34,14 +35,17 @@ async function goToViewerIfAuthed() {
   return false;
 }
 
-enterBtn.addEventListener("click", async () => {
+async function openEntryFlow() {
   if (!isAuthConfigured()) {
     window.location.href = "viewer.html";
     return;
   }
   if (await goToViewerIfAuthed()) return;
   openModal();
-});
+}
+
+enterBtn.addEventListener("click", openEntryFlow);
+if (enterBtnHeader) enterBtnHeader.addEventListener("click", openEntryFlow);
 
 document.getElementById("auth-close").addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
@@ -127,18 +131,18 @@ function initHeroScene() {
   const group = new THREE.Group();
   scene.add(group);
 
-  const nodeGeo = new THREE.SphereGeometry(0.08, 12, 12);
-  const edgeGeo = new THREE.CylinderGeometry(0.025, 0.025, 1, 8);
-  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
-  const edgeMat = new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.55 });
+  const nodeGeo = new THREE.SphereGeometry(0.07, 10, 10);
+  const edgeGeo = new THREE.CylinderGeometry(0.018, 0.018, 1, 6);
+  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x3b9eff });
+  const edgeMat = new THREE.MeshBasicMaterial({ color: 0x2ecc71, transparent: true, opacity: 0.45 });
 
   const nodes = [];
   for (let ring = 0; ring < 3; ring += 1) {
-    const radius = 2.2 + ring * 1.4;
+    const radius = 2.0 + ring * 1.3;
     const count = 6 + ring * 2;
     for (let i = 0; i < count; i += 1) {
-      const angle = (i / count) * Math.PI * 2;
-      const y = (ring - 1) * 1.1;
+      const angle = (i / count) * Math.PI * 2 + ring * 0.2;
+      const y = (ring - 1) * 0.95;
       nodes.push(new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius));
     }
   }
@@ -162,8 +166,8 @@ function initHeroScene() {
   }
 
   const innerRing = new THREE.Mesh(
-    new THREE.TorusGeometry(2.8, 0.04, 8, 64),
-    new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.35 })
+    new THREE.TorusGeometry(2.6, 0.025, 6, 48),
+    new THREE.MeshBasicMaterial({ color: 0xd4a017, transparent: true, opacity: 0.3 })
   );
   innerRing.rotation.x = Math.PI / 2;
   group.add(innerRing);
@@ -172,8 +176,8 @@ function initHeroScene() {
   function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
-    group.rotation.y = t * 0.18;
-    group.rotation.x = Math.sin(t * 0.25) * 0.12;
+    group.rotation.y = t * 0.12;
+    group.rotation.x = Math.sin(t * 0.2) * 0.08;
     renderer.render(scene, camera);
   }
   animate();
