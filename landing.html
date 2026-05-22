@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zeolite Ring</title>
-  <meta name="description" content="Zeolite ion-conduction topology for Li, Na, and Zn solid-state battery electrolytes.">
+  <meta name="description" content="Open-source zeolite ion-conduction 5/6 member-ring topology visualizer for solid-state battery electrolytes.">
+  <meta name="author" content="Jiaao Wang">
+  <link rel="license" href="LICENSE">
+  <link rel="canonical" href="https://zeolitering.com/">
   <link rel="stylesheet" href="assets/css/landing.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -23,6 +26,7 @@
         <a href="#reading" data-i18n="navReading">Reading</a>
         <a href="#capabilities" data-i18n="navCapabilities">Platform</a>
         <a href="#author" data-i18n="navAuthor">Author</a>
+        <a href="#links" data-i18n="navLinks">Links</a>
         <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="navSource">Source</a>
         <div class="lang-switch">
           <button type="button" data-lang="en" class="active" data-i18n="langEn">EN</button>
@@ -35,11 +39,17 @@
     <section class="hero">
       <div class="hero-copy">
         <div class="eyebrow" data-i18n="eyebrow">Solid-State Electrolyte · Zeolite Ion Transport</div>
+        <p class="hero-tagline" data-i18n="heroTagline">Open-source Zeolite ion-Conduction 5/6 Member-Rings Topology Visualizer</p>
         <h1>
           <span data-i18n="heroTitle1">Zeolite ion-conduction topology</span><br>
           <span class="line-ion" data-i18n="heroTitle2">for solid-state battery electrolytes</span>
         </h1>
         <p class="hero-lead" data-i18n="heroLead">Map 263 zeolite frameworks...</p>
+        <div class="hero-badges">
+          <span class="hero-badge" data-i18n="badgeOpenSource">Open Source</span>
+          <a class="hero-badge hero-badge-link" href="LICENSE" data-i18n="badgeMit">MIT License</a>
+          <a class="hero-badge hero-badge-link" href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
+        </div>
         <div class="hero-actions">
           <button class="btn btn-primary" id="enter-btn" type="button" data-i18n="heroCta">Enter Viewer</button>
           <a class="btn btn-outline" href="#science" data-i18n="heroSecondary">Read the Science</a>
@@ -142,18 +152,61 @@
           <li><a href="https://profiles.stanford.edu/xiwen-chi" target="_blank" rel="noopener" data-i18n="collabProfile">Stanford Profile</a></li>
         </ul>
       </div>
-      <div class="links-block">
-        <h3 data-i18n="linksTitle">Links</h3>
-        <ul class="links-list">
-          <li><a href="https://theory.cm.utexas.edu/henkelman/" target="_blank" rel="noopener" data-i18n="linkHenkelman">Henkelman Research Group</a></li>
-          <li><a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="linkGithub">GitHub repository</a></li>
+      </div>
+      <div class="links-block" id="links">
+        <h2 data-i18n="linksTitle">Friendly Links</h2>
+        <p class="section-lead links-lead" data-i18n="linksSub">Research groups and platforms related to zeolite electrolytes, computational materials, and battery design.</p>
+        <ul class="links-grid">
+          <li>
+            <a href="https://www.li-lab-cat-design.com/" target="_blank" rel="noopener">
+              <span class="link-name" data-i18n="linkLiLab">Hao Li Lab · Digital Materials Lab</span>
+              <span class="link-desc" data-i18n="linkLiLabDesc">Tohoku University · DigCat · DigBat · DigHyd</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://qiangrouppage.lbl.gov/" target="_blank" rel="noopener">
+              <span class="link-name" data-i18n="linkQian">Qian Group</span>
+              <span class="link-desc" data-i18n="linkQianDesc">Lawrence Berkeley National Laboratory · Computational chemistry &amp; battery applications</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.deepprinciple.com/index.html" target="_blank" rel="noopener">
+              <span class="link-name" data-i18n="linkDeepPrinciple">Deep Principle</span>
+              <span class="link-desc" data-i18n="linkDeepPrincipleDesc">Agentic AI for materials discovery &amp; innovation</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://theory.cm.utexas.edu/henkelman/" target="_blank" rel="noopener">
+              <span class="link-name" data-i18n="linkHenkelman">Henkelman Research Group</span>
+              <span class="link-desc" data-i18n="linkHenkelmanDesc">The University of Texas at Austin</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">
+              <span class="link-name" data-i18n="linkGithub">Zeolite Ring on GitHub</span>
+              <span class="link-desc" data-i18n="linkGithubDesc">Source code, issues, and contributions</span>
+            </a>
+          </li>
         </ul>
       </div>
     </section>
 
     <footer class="site-footer">
-      <span data-i18n="footerText">Zeolite Ring</span>
-      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Zeolite Ring</div>
+          <p data-i18n="footerTagline">Open-source zeolite ion-conduction 5/6 member-ring topology visualizer.</p>
+        </div>
+        <div class="footer-nav">
+          <a href="LICENSE" data-i18n="footerLicenseLink">MIT License</a>
+          <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:wangjiaao0720@utexas.edu" data-i18n="footerContact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerCopyright">© 2026 Jiaao Wang. Released under the MIT License.</span>
+        <span class="footer-version">v1.1</span>
+      </div>
     </footer>
   </div>
 

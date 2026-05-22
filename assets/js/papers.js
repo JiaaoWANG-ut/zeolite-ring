@@ -6,7 +6,6 @@ export const PAPERS = [
     journal: "Nature",
     year: "2021",
     titleKey: "paper1Title",
-    authorsKey: "paper1Authors",
     summaryKey: "paper1Summary",
   },
   {
@@ -16,7 +15,6 @@ export const PAPERS = [
     journal: "JACS",
     year: "2023",
     titleKey: "paper2Title",
-    authorsKey: "paper2Authors",
     summaryKey: "paper2Summary",
   },
 ];
@@ -47,7 +45,7 @@ export function initPaperReader(t) {
   function openPdfModal(paper) {
     const url = pdfHref(paper.pdf);
     titleEl.textContent = t(paper.titleKey);
-    metaEl.textContent = `${t(paper.authorsKey)} · ${paper.journal} (${paper.year})`;
+    metaEl.textContent = `${paper.journal} (${paper.year})`;
     frame.src = url;
     downloadEl.href = url;
     downloadEl.setAttribute("download", paper.pdf.split("/").pop());
@@ -64,7 +62,6 @@ export function initPaperReader(t) {
       card.innerHTML = `
       <div class="paper-meta">${paper.journal} · ${paper.year}</div>
       <h3 class="paper-title" data-i18n="${paper.titleKey}"></h3>
-      <p class="paper-authors" data-i18n="${paper.authorsKey}"></p>
       <p class="paper-summary" data-i18n="${paper.summaryKey}"></p>
       <div class="paper-actions">
         <button type="button" class="btn btn-primary btn-sm paper-preview-btn" data-i18n="paperPreview">Preview PDF</button>
