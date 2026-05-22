@@ -11,19 +11,19 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 
-<body>
+<body data-page-title="viewerTitle">
     <div id="loading-overlay">
         <div class="spinner"></div>
-        <p>Loading structure</p>
+        <p data-i18n="viewerLoading">Loading structure</p>
     </div>
 
     <div id="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Select Zeolite Framework</h2>
+                <h2 data-i18n="modalSelect">Select Zeolite Framework</h2>
                 <div class="close-btn" onclick="toggleModal(false)">×</div>
             </div>
-            <input type="text" id="modal-search" placeholder="Search... (Gold: 6MR, Green: 5MR)">
+            <input type="text" id="modal-search" data-i18n-placeholder="modalSearch" placeholder="Search…">
             <div id="chip-grid"></div>
         </div>
     </div>
@@ -31,113 +31,115 @@
     <div id="export-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Export Image</h2>
+                <h2 data-i18n="exportTitle">Export Image</h2>
                 <div class="close-btn" onclick="toggleExportModal(false)">×</div>
             </div>
             <div class="export-layout">
                 <div class="preview-container"><img id="export-preview-img" src="" alt="Preview"></div>
                 <div class="export-controls">
                     <div class="control-group">
-                        <label>Resolution</label>
+                        <label data-i18n="exportResolution">Resolution</label>
                         <div class="dpi-grid">
                             <div class="dpi-btn active" onclick="setDPI(1)">1x</div>
                             <div class="dpi-btn" onclick="setDPI(2)">2x</div>
                             <div class="dpi-btn" onclick="setDPI(4)">4x</div>
                         </div>
                     </div>
-                    <div class="toggle-row"><span>Include Axes</span><label class="switch"><input type="checkbox"
+                    <div class="toggle-row"><span data-i18n="exportAxes">Include Axes</span><label class="switch"><input type="checkbox"
                                 id="toggle-axes-export" checked><span class="slider"></span></label></div>
                     <button class="primary" style="margin-top: auto; padding: 15px;"
-                        onclick="downloadExport()">Download</button>
+                        onclick="downloadExport()" data-i18n="exportDownload">Download</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="auth-bar">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="zh">中文</button>
         <span id="user-email"></span>
-        <a href="landing.html">Home</a>
-        <button id="sign-out-btn" type="button">Sign Out</button>
+        <a href="landing.html" data-i18n="viewerHome">Home</a>
+        <button id="sign-out-btn" type="button" data-i18n="viewerSignOut">Sign Out</button>
     </div>
 
     <div id="ui">
         <div class="panel-header">
             <h1>Zeolite Ring</h1>
-            <div class="panel-sub">Framework Viewer</div>
+            <div class="panel-sub" data-i18n="viewerSub">Framework Viewer</div>
         </div>
-        <div class="select-trigger" onclick="toggleModal(true)"><span id="current-name">Select Framework</span><span>↗</span></div>
+        <div class="select-trigger" onclick="toggleModal(true)"><span id="current-name" data-i18n="viewerSelect">Select Framework</span><span>↗</span></div>
 
         <div class="panel-section">
-            <div class="panel-section-title">Lattice Expansion</div>
+            <div class="panel-section-title" data-i18n="secLattice">Lattice Expansion</div>
         <div class="control-group">
-            <label>Expansion X <span class="value-display" id="exp-x-val">2</span></label>
+            <label><span data-i18n="expX">Expansion X</span> <span class="value-display" id="exp-x-val">2</span></label>
             <input type="range" id="exp-x" min="1" max="5" value="2">
         </div>
         <div class="control-group">
-            <label>Expansion Y <span class="value-display" id="exp-y-val">2</span></label>
+            <label><span data-i18n="expY">Expansion Y</span> <span class="value-display" id="exp-y-val">2</span></label>
             <input type="range" id="exp-y" min="1" max="5" value="2">
         </div>
         <div class="control-group">
-            <label>Expansion Z <span class="value-display" id="exp-z-val">2</span></label>
+            <label><span data-i18n="expZ">Expansion Z</span> <span class="value-display" id="exp-z-val">2</span></label>
             <input type="range" id="exp-z" min="1" max="5" value="2">
         </div>
         </div>
 
         <div class="panel-section">
-            <div class="panel-section-title">Appearance</div>
+            <div class="panel-section-title" data-i18n="secAppearance">Appearance</div>
         <div class="control-group">
-            <label>Bond Thickness <span class="value-display" id="thick-val">0.10</span></label>
+            <label><span data-i18n="bondThick">Bond Thickness</span> <span class="value-display" id="thick-val">0.10</span></label>
             <input type="range" id="thickness" min="0.02" max="0.3" step="0.01" value="0.10">
         </div>
         <div class="control-group">
-            <label>Standard Opacity <span class="value-display" id="alpha-val">0.40</span></label>
+            <label><span data-i18n="stdOpacity">Standard Opacity</span> <span class="value-display" id="alpha-val">0.40</span></label>
             <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.40">
         </div>
         <div class="control-group">
-            <label>Face Opacity <span class="value-display" id="face-alpha-val">0.20</span></label>
+            <label><span data-i18n="faceOpacity">Face Opacity</span> <span class="value-display" id="face-alpha-val">0.20</span></label>
             <input type="range" id="face-opacity" min="0" max="1" step="0.05" value="0.20">
         </div>
         <div class="control-group">
             <div class="color-picker">
-                <input type="color" id="bg-color" value="#000000">
-                <label style="margin:0">Background</label>
+                <input type="color" id="bg-color" value="#f4f5f7">
+                <label style="margin:0" data-i18n="bgColor">Background</label>
             </div>
         </div>
         </div>
 
         <div class="panel-section">
-            <div class="panel-section-title">Camera</div>
+            <div class="panel-section-title" data-i18n="secCamera">Camera</div>
         <div class="control-group">
-            <label>View Padding (Å) <span class="value-display" id="padding-val">10.0</span></label>
+            <label><span data-i18n="viewPadding">View Padding (Å)</span> <span class="value-display" id="padding-val">10.0</span></label>
             <input type="range" id="padding" min="0" max="20" step="0.5" value="10.0">
         </div>
         <div class="control-group">
-            <label>FOV <span class="value-display" id="fov-val">0</span></label>
+            <label><span data-i18n="fov">FOV</span> <span class="value-display" id="fov-val">0</span></label>
             <input type="range" id="fov" min="0" max="100" value="0">
         </div>
         </div>
 
         <div class="panel-section">
-            <div class="panel-section-title">Ring Overlays</div>
-            <div class="toggle-row"><span class="ring-5">5-Member Rings</span><label class="switch"><input type="checkbox"
+            <div class="panel-section-title" data-i18n="secRings">Ring Overlays</div>
+            <div class="toggle-row"><span class="ring-5" data-i18n="ring5">5-Member Rings</span><label class="switch"><input type="checkbox"
                         id="toggle-5mr" checked onchange="updateVisuals()"><span class="slider"></span></label></div>
-            <div class="toggle-row"><span class="ring-6">6-Member Rings</span><label class="switch"><input
+            <div class="toggle-row"><span class="ring-6" data-i18n="ring6">6-Member Rings</span><label class="switch"><input
                         type="checkbox" id="toggle-6mr" checked onchange="updateVisuals()"><span
                         class="slider"></span></label></div>
-            <div class="toggle-row"><span>Coordinate Axes</span><label class="switch"><input
+            <div class="toggle-row"><span data-i18n="axes">Coordinate Axes</span><label class="switch"><input
                         type="checkbox" id="toggle-axes-main" checked onchange="updateAxesVisibility()"><span
                         class="slider"></span></label></div>
-            <div class="toggle-row"><span>Auto-Rotate</span><label class="switch"><input
+            <div class="toggle-row"><span data-i18n="autoRotate">Auto-Rotate</span><label class="switch"><input
                         type="checkbox" id="toggle-rotate" onchange="updateRotation()"><span
                         class="slider"></span></label></div>
         </div>
 
         <div class="btn-group">
-            <button onclick="resetCamera()">Reset View</button>
-            <button class="primary" onclick="openExportUI()">Export PNG</button>
+            <button onclick="resetCamera()" data-i18n="resetView">Reset View</button>
+            <button class="primary" onclick="openExportUI()" data-i18n="exportPng">Export PNG</button>
         </div>
     </div>
-    <div id="status">Ready</div>
+    <div id="status" data-i18n="viewerReady">Ready</div>
 
     <script>
         let scene, camera, renderer, controls, topology = null;
@@ -146,10 +148,10 @@
         let exportDPI = 1;
         let isUserInteracting = false;
 
-        const COLORS = { standard: 0x64748b, mr5: 0x2ecc71, mr6: 0xd4a017 };
+        const COLORS = { standard: 0x64748b, mr5: 0x047857, mr6: 0xb45309 };
 
         async function init() {
-            scene = new THREE.Scene(); scene.background = new THREE.Color(0);
+            scene = new THREE.Scene(); scene.background = new THREE.Color(0xf4f5f7);
             const aspect = window.innerWidth / window.innerHeight;
             perspectiveCamera = new THREE.PerspectiveCamera(60, aspect, 0.1, 2000);
             orthographicCamera = new THREE.OrthographicCamera(-20 * aspect, 20 * aspect, 20, -20, 1, 2000);
@@ -376,10 +378,13 @@
     </script>
     <script type="module">
         import { requireAuth, signOut, isAuthConfigured } from './assets/js/auth.js';
+        import { initI18n, t } from './assets/js/i18n.js';
+
+        initI18n();
 
         async function bootAuth() {
             if (!isAuthConfigured()) {
-                document.getElementById('user-email').textContent = 'Dev mode';
+                document.getElementById('user-email').textContent = t('viewerDevMode');
                 document.getElementById('sign-out-btn').style.display = 'none';
                 window.startViewer();
                 return;

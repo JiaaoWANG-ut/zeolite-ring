@@ -3,153 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeolite Ring — Molecular Sieve Topology</title>
-  <meta name="description" content="Interactive 3D explorer for zeolite framework topologies, ring statistics, and battery-relevant molecular sieve structures.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Zeolite Ring</title>
+  <meta name="description" content="World-first molecular sieve ion-conduction topology analysis for battery electrolytes.">
   <link rel="stylesheet" href="assets/css/landing.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
+<body data-page-title="metaTitle">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-vignette" aria-hidden="true"></div>
 
   <div class="page">
     <header class="site-header">
       <div class="logo-mark">
-        <div class="logo-icon">ZR</div>
+        <div class="logo-icon">Li⁺</div>
         <div class="logo-text">Zeolite <span>Ring</span></div>
       </div>
       <nav class="header-nav">
-        <a href="#capabilities">Capabilities</a>
-        <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">Source</a>
-        <button class="btn btn-primary nav-cta" id="enter-btn-header" type="button">Launch Viewer</button>
+        <a href="#science" data-i18n="navScience">Science</a>
+        <a href="#capabilities" data-i18n="navCapabilities">Platform</a>
+        <a href="#author" data-i18n="navAuthor">Author</a>
+        <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="navSource">Source</a>
+        <div class="lang-switch">
+          <button type="button" data-lang="en" class="active" data-i18n="langEn">EN</button>
+          <button type="button" data-lang="zh" data-i18n="langZh">中文</button>
+        </div>
+        <button class="btn btn-primary nav-cta" id="enter-btn-header" type="button" data-i18n="navLaunch">Launch Viewer</button>
       </nav>
     </header>
 
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Molecular Sieve · Battery Materials</div>
+        <div class="eyebrow" data-i18n="eyebrow">Battery Electrolyte · Molecular Sieve Ion Transport</div>
         <h1>
-          Map <span class="line-ion">263 frameworks</span><br>
-          Ring by ring,<br>
-          <span class="line-battery">cell to catalyst.</span>
+          <span data-i18n="heroTitle1">World's first platform for</span><br>
+          <span class="line-ion" data-i18n="heroTitle2">molecular-sieve ion-conduction topology</span>
         </h1>
-        <p class="hero-lead">
-          A research-grade topology lab for zeolite frameworks. Inspect 5- and 6-member rings
-          on Si–O–Si networks, expand unit cells, and export figures for catalysis,
-          separation, and electrolyte design workflows.
-        </p>
+        <p class="hero-lead" data-i18n="heroLead">Map 263 zeolite frameworks...</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" id="enter-btn" type="button">Enter Viewer</button>
-          <a class="btn btn-outline" href="#capabilities">View Capabilities</a>
+          <button class="btn btn-primary" id="enter-btn" type="button" data-i18n="heroCta">Enter Viewer</button>
+          <a class="btn btn-outline" href="#science" data-i18n="heroSecondary">Read the Science</a>
         </div>
       </div>
 
-      <aside class="readout-panel" aria-label="System readouts">
+      <aside class="readout-panel">
         <div class="readout-header">
-          <span>Topology Engine</span>
-          <span class="readout-status">Online</span>
+          <span data-i18n="readoutTitle">Topology Engine</span>
+          <span class="readout-status" data-i18n="readoutOnline">Ready</span>
         </div>
         <div class="readout-grid">
           <div class="readout-cell">
-            <div class="readout-label">Frameworks</div>
+            <div class="readout-label" data-i18n="readoutFrameworks">Frameworks</div>
             <div class="readout-value gold">263</div>
-            <div class="readout-note">IZA-style topologies, precomputed</div>
+            <div class="readout-note" data-i18n="readoutFrameworksNote">IZA-style topologies</div>
           </div>
           <div class="readout-cell">
-            <div class="readout-label">Ring classes</div>
+            <div class="readout-label" data-i18n="readoutRings">Ring classes</div>
             <div class="readout-value mono">5MR · 6MR</div>
-            <div class="readout-note">Angle + planarity filtered</div>
+            <div class="readout-note" data-i18n="readoutRingsNote">Planarity filtered</div>
           </div>
           <div class="readout-cell full">
-            <div class="readout-label">Application domains</div>
-            <div class="readout-value" style="font-size:1.35rem;">Battery · Catalysis · Separation</div>
-            <div class="readout-note">Industrial molecular sieve structure analysis</div>
+            <div class="readout-label" data-i18n="readoutApps">Primary application</div>
+            <div class="readout-value" style="font-size:1.2rem;" data-i18n="readoutAppsVal">Li-ion battery electrolytes</div>
+            <div class="readout-note" data-i18n="readoutAppsNote">Ion-conduction topology screening</div>
           </div>
         </div>
       </aside>
     </section>
 
+    <section class="section" id="science">
+      <article class="science-block">
+        <span class="science-badge" data-i18n="scienceBadge">Electrolyte design</span>
+        <h2 data-i18n="scienceTitle">Why rings matter for Li⁺ transport</h2>
+        <p data-i18n="scienceP1">In molecular sieves...</p>
+        <p data-i18n="scienceP2">5MR and 6MR environments...</p>
+        <p data-i18n="scienceP3">Zeolite Ring provides...</p>
+      </article>
+    </section>
+
     <section class="section" id="capabilities">
       <div class="section-head">
-        <h2>Capabilities</h2>
-        <span>v1.0 · static topology pipeline</span>
+        <h2 data-i18n="capTitle">Platform</h2>
+        <span data-i18n="capVersion">v1.1</span>
       </div>
       <div class="feature-grid">
         <article class="feature-card">
           <div class="feature-index">01</div>
-          <h3>3D Framework Viewer</h3>
-          <p>Orbit, snap to crystallographic axes, expand lattice vectors, and toggle ring highlights with publication-ready export.</p>
+          <h3 data-i18n="cap1Title">3D Framework Viewer</h3>
+          <p data-i18n="cap1Text">Orbit, expand unit cells...</p>
         </article>
         <article class="feature-card">
           <div class="feature-index">02</div>
-          <h3>Precomputed Graphs</h3>
-          <p>Every framework ships as static JSON — instant loads on edge, zero server-side pymatgen at runtime.</p>
+          <h3 data-i18n="cap2Title">Precomputed Topologies</h3>
+          <p data-i18n="cap2Text">Instant static JSON...</p>
         </article>
         <article class="feature-card">
           <div class="feature-index">03</div>
-          <h3>Gated Access</h3>
-          <p>Sign in with Google or email. Open source, GitHub-maintained, deployed on Cloudflare.</p>
+          <h3 data-i18n="cap3Title">Secure Access</h3>
+          <p data-i18n="cap3Text">Sign in with Google...</p>
         </article>
       </div>
       <div class="stack-row">
-        <span class="chip ion">Three.js</span>
-        <span class="chip ion">Cloudflare</span>
-        <span class="chip battery">Molecular Sieves</span>
-        <span class="chip battery">Battery Materials</span>
-        <span class="chip">Supabase Auth</span>
-        <span class="chip">Bricolage Grotesque</span>
+        <span class="chip ion" data-i18n="chipThree">Three.js</span>
+        <span class="chip ion" data-i18n="chipCloudflare">Cloudflare</span>
+        <span class="chip battery" data-i18n="chipBattery">Battery Electrolytes</span>
+        <span class="chip battery" data-i18n="chipSieve">Molecular Sieves</span>
+      </div>
+    </section>
+
+    <section class="section" id="author">
+      <div class="author-block">
+        <h2 data-i18n="authorTitle">Author & Affiliation</h2>
+        <div class="author-name" data-i18n="authorName">Jiaao Wang</div>
+        <div class="author-affil" data-i18n="authorAffil">UT Austin · Henkelman Group</div>
+        <p class="author-bio" data-i18n="authorBio">Developed for molecular-sieve ion-transport studies.</p>
+      </div>
+      <div class="links-block">
+        <h3 data-i18n="linksTitle">Links</h3>
+        <ul class="links-list">
+          <li><a href="https://theory.cm.utexas.edu/henkelman/" target="_blank" rel="noopener" data-i18n="linkHenkelman">Henkelman Research Group</a></li>
+          <li><a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener" data-i18n="linkGithub">GitHub repository</a></li>
+        </ul>
       </div>
     </section>
 
     <footer class="site-footer">
-      <span>Zeolite Ring · Materials topology for research teams</span>
-      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">github.com/JiaaoWANG-ut/zeolite-ring</a>
+      <span data-i18n="footerText">Zeolite Ring</span>
+      <a href="https://github.com/JiaaoWANG-ut/zeolite-ring" target="_blank" rel="noopener">GitHub</a>
     </footer>
   </div>
 
-  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true">
     <div class="modal-wrap">
       <button class="auth-close" id="auth-close" type="button" aria-label="Close">×</button>
       <div class="auth-modal">
-        <h2 id="auth-title">Access the lab</h2>
-        <p class="auth-sub">Sign in to open the interactive zeolite framework viewer.</p>
-
-        <button class="btn btn-google" id="google-signin" type="button">
-          Continue with Google
-        </button>
-
-        <div class="auth-divider">or email</div>
-
+        <h2 data-i18n="authTitle">Access the platform</h2>
+        <p class="auth-sub" data-i18n="authSub">Sign in to open the viewer.</p>
+        <button class="btn btn-google" id="google-signin" type="button" data-i18n="authGoogle">Continue with Google</button>
+        <div class="auth-divider" data-i18n="authOrEmail">or email</div>
         <div class="auth-tabs">
-          <button class="auth-tab active" type="button" data-tab="login">Sign In</button>
-          <button class="auth-tab" type="button" data-tab="signup">Register</button>
-          <button class="auth-tab" type="button" data-tab="magic">Magic Link</button>
+          <button class="auth-tab active" type="button" data-tab="login" data-i18n="authSignIn">Sign In</button>
+          <button class="auth-tab" type="button" data-tab="signup" data-i18n="authRegister">Register</button>
+          <button class="auth-tab" type="button" data-tab="magic" data-i18n="authMagic">Magic Link</button>
         </div>
-
         <form class="auth-form active" id="form-login">
-          <label for="login-email">Email</label>
+          <label for="login-email" data-i18n="authEmail">Email</label>
           <input id="login-email" type="email" autocomplete="email" required>
-          <label for="login-password">Password</label>
+          <label for="login-password" data-i18n="authPassword">Password</label>
           <input id="login-password" type="password" autocomplete="current-password" required>
-          <button class="btn btn-primary" type="submit">Sign In</button>
+          <button class="btn btn-primary" type="submit" data-i18n="authSignIn">Sign In</button>
         </form>
-
         <form class="auth-form" id="form-signup">
-          <label for="signup-email">Email</label>
+          <label for="signup-email" data-i18n="authEmail">Email</label>
           <input id="signup-email" type="email" autocomplete="email" required>
-          <label for="signup-password">Password</label>
+          <label for="signup-password" data-i18n="authPassword">Password</label>
           <input id="signup-password" type="password" autocomplete="new-password" minlength="6" required>
-          <button class="btn btn-primary" type="submit">Create Account</button>
+          <button class="btn btn-primary" type="submit" data-i18n="authCreate">Create Account</button>
         </form>
-
         <form class="auth-form" id="form-magic">
-          <label for="magic-email">Email</label>
+          <label for="magic-email" data-i18n="authEmail">Email</label>
           <input id="magic-email" type="email" autocomplete="email" required>
-          <button class="btn btn-primary" type="submit">Send Magic Link</button>
+          <button class="btn btn-primary" type="submit" data-i18n="authSendMagic">Send Magic Link</button>
         </form>
-
         <p class="auth-error" id="auth-error"></p>
       </div>
     </div>

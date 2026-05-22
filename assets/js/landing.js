@@ -6,6 +6,9 @@ import {
   signInWithMagicLink,
   signUpWithEmail,
 } from "./auth.js";
+import { initI18n, t } from "./i18n.js";
+
+initI18n();
 
 const modal = document.getElementById("auth-modal");
 const authError = document.getElementById("auth-error");
@@ -96,7 +99,7 @@ document.getElementById("form-signup").addEventListener("submit", async (event) 
     if (result.session) {
       window.location.href = "viewer.html";
     } else {
-      setError("Check your email to confirm your account.");
+      setError(t("authConfirmEmail"));
     }
   } catch (error) {
     setError(error.message);
@@ -108,7 +111,7 @@ document.getElementById("form-magic").addEventListener("submit", async (event) =
   try {
     setError("");
     await signInWithMagicLink(document.getElementById("magic-email").value.trim());
-    setError("Magic link sent — check your inbox.");
+    setError(t("authMagicSent"));
   } catch (error) {
     setError(error.message);
   }
@@ -133,8 +136,8 @@ function initHeroScene() {
 
   const nodeGeo = new THREE.SphereGeometry(0.07, 10, 10);
   const edgeGeo = new THREE.CylinderGeometry(0.018, 0.018, 1, 6);
-  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x3b9eff });
-  const edgeMat = new THREE.MeshBasicMaterial({ color: 0x2ecc71, transparent: true, opacity: 0.45 });
+  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x1d4ed8 });
+  const edgeMat = new THREE.MeshBasicMaterial({ color: 0x047857, transparent: true, opacity: 0.4 });
 
   const nodes = [];
   for (let ring = 0; ring < 3; ring += 1) {
@@ -167,7 +170,7 @@ function initHeroScene() {
 
   const innerRing = new THREE.Mesh(
     new THREE.TorusGeometry(2.6, 0.025, 6, 48),
-    new THREE.MeshBasicMaterial({ color: 0xd4a017, transparent: true, opacity: 0.3 })
+    new THREE.MeshBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.25 })
   );
   innerRing.rotation.x = Math.PI / 2;
   group.add(innerRing);

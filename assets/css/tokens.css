@@ -1,34 +1,35 @@
 /**
- * Zeolite Ring — design tokens
- * Industrial materials-lab aesthetic: flat panels, schematic grid, instrument readouts.
+ * Zeolite Ring — design tokens (light academic theme)
  */
 :root {
-  --zr-bg: #060608;
-  --zr-bg-elevated: #0c0d12;
-  --zr-surface: #10121a;
-  --zr-surface-hover: #161922;
-  --zr-border: #222736;
-  --zr-border-strong: #2f3648;
+  --zr-bg: #f7f8fa;
+  --zr-bg-elevated: #ffffff;
+  --zr-surface: #ffffff;
+  --zr-surface-hover: #f1f3f7;
+  --zr-border: #e2e6ee;
+  --zr-border-strong: #c8ceda;
 
-  --zr-ion: #3b9eff;
-  --zr-ion-dim: rgba(59, 158, 255, 0.12);
-  --zr-battery: #d4a017;
-  --zr-battery-dim: rgba(212, 160, 23, 0.12);
-  --zr-sieve: #2ecc71;
-  --zr-sieve-dim: rgba(46, 204, 113, 0.12);
+  --zr-ion: #1d4ed8;
+  --zr-ion-dim: rgba(29, 78, 216, 0.08);
+  --zr-battery: #b45309;
+  --zr-battery-dim: rgba(180, 83, 9, 0.08);
+  --zr-sieve: #047857;
+  --zr-sieve-dim: rgba(4, 120, 87, 0.08);
+  --zr-accent-soft: #eff6ff;
 
-  --zr-text: #e8eaef;
-  --zr-text-muted: #8b93a7;
-  --zr-text-faint: #5c6378;
-  --zr-danger: #e05c5c;
+  --zr-text: #111827;
+  --zr-text-muted: #4b5563;
+  --zr-text-faint: #9ca3af;
+  --zr-danger: #dc2626;
 
-  --zr-font-display: "Bricolage Grotesque", Georgia, serif;
-  --zr-font-body: "Inter Tight", system-ui, sans-serif;
-  --zr-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --zr-font-display: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+  --zr-font-body: "DM Sans", "Noto Sans SC", system-ui, sans-serif;
+  --zr-font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --zr-radius-sm: 4px;
-  --zr-radius-md: 8px;
-  --zr-radius-lg: 12px;
+  --zr-radius-sm: 6px;
+  --zr-radius-md: 10px;
+  --zr-radius-lg: 16px;
 
-  --zr-shadow-panel: 0 0 0 1px var(--zr-border), 0 24px 48px rgba(0, 0, 0, 0.45);
+  --zr-shadow-panel: 0 1px 2px rgba(17, 24, 39, 0.04), 0 8px 24px rgba(17, 24, 39, 0.06);
+  --zr-shadow-soft: 0 12px 40px rgba(17, 24, 39, 0.08);
 }
