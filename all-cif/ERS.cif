@@ -1,0 +1,73 @@
+data_-ERS
+
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher, L.B. McCusker, D. H. Brouwer and B. Marler
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+
+_chemical_name_mineral  ECNU-46
+_cell_length_a    20.13067
+_cell_length_b    20.13067
+_cell_length_c    14.37183
+_cell_angle_alpha   90.00000
+_cell_angle_beta    90.00000
+_cell_angle_gamma  120.00000
+_cell_volume      5043.8197
+
+_symmetry_space_group_name_H-M 'P-62C'
+_symmetry_Int_Tables_number     190
+_symmetry_cell_setting            hexagonal
+
+
+loop_
+  _symmetry_equiv_pos_as_xyz
+X,Y,Z
+-Y,X-Y,Z
+-X+Y,-X,Z
+X,Y,-Z+1/2
+-Y,X-Y,-Z+1/2
+-X+Y,-X,-Z+1/2
+Y,X,Z+1/2
+-X,-X+Y,Z+1/2
+X-Y,-Y,Z+1/2
+Y,X,-Z
+-X,-X+Y,-Z
+X-Y,-Y,-Z
+
+
+loop_
+  _atom_site_label
+  _atom_site_type_symbol
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+Si1  Si   0.49813   0.27482   0.07278 
+Si2  Si   0.50426   0.42493   0.05157 
+Si3  Si   0.18201   0.53073   0.06843 
+Si4  Si   0.50352   0.06490   0.25000 
+Si5  Si   0.43790   0.17109   0.25000 
+Si6  Si   0.09146   0.43482   0.25000 
+Si7  Si   0.66667   0.33333   0.13825 
+Si8  Si   0.33333   0.66667   0.13821 
+O1   O    0.41730   0.99330   0.25000 
+O2   O    0.54811   0.06200   0.15853 
+O3   O    0.50025   0.14324   0.25000 
+O4   O    0.35297   0.09719   0.25000 
+O5   O    0.44876   0.22160   0.15850 
+O6   O    0.58721   0.32450   0.10124 
+O7   O    0.46807   0.33324   0.04724 
+O8   O    0.66667   0.33333   0.25000 
+O9   O    0.44713   0.44713   0.00000 
+O11  O    0.08518   0.35188   0.25000 
+O12  O    0.13722   0.48135   0.15866 
+O13  O    0.12130   0.53479   0.99920 
+O14  O    0.22222   0.48929   0.01597 
+O18  O    0.24690   0.61539   0.10017 
+O21  O    0.33333   0.66667   0.25000 
